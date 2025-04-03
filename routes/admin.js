@@ -6,13 +6,13 @@ import { getProducts, createProduct, updateProduct, deleteProduct } from '../con
 const router = Router();
 
 // Gestion de usuarios por parte del administrador
-router.get("/users", verifyToken, checkRole(["admin"]), getUsers);
+router.get("/users", /*verifyToken, checkRole(["admin"]),*/ getUsers);
 router.post("/users", verifyToken, checkRole(["admin"]), createUser);
 router.put("/users/:id", verifyToken, checkRole(["admin"]), updateUser);
 router.delete("/users/:id", verifyToken, checkRole(["admin"]), deleteUser);
 
 // Gestion de productos por parte del administrador y editor
-router.get("/products", verifyToken, checkRole(["admin", "editor"]), getProducts);
+router.get("/products", /*verifyToken, checkRole(["admin", "editor"]),*/ getProducts);
 router.post("/products", verifyToken, checkRole(["admin", "editor"]), createProduct);
 router.put("/products/:id", verifyToken, checkRole(["admin", "editor"]), updateProduct);
 router.delete("/products/:id", verifyToken, checkRole(["admin", "editor"]), deleteProduct);

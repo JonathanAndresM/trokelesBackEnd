@@ -21,7 +21,7 @@ let schema = new Schema({
     },
     isActive: { type: Boolean, default: true },
     isFeatured: { type: Boolean, default: false }, // Producto destacado para el home
-    isNew: { type: Boolean, default: false }, // Producto novedoso para el home
+    isNewProduct: { type: Boolean, default: false }, // Producto novedoso para el home
     discount: {
         percentage: { type: Number, default: 0 },
         validUntil: { type: Date }
@@ -30,7 +30,7 @@ let schema = new Schema({
         average: { type: Number, default: 0 },
         reviews: [
             {
-                userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+                userId: { type: Schema.Types.ObjectId, ref: 'User' },
                 comment: { type: String },
                 rating: { type: Number, min: 1, max: 5 },
                 createdAt: { type: Date, default: Date.now }
@@ -42,12 +42,12 @@ let schema = new Schema({
 });
 
 // Generar SKU automáticamente si no se proporciona
-productSchema.pre("save", function (next) {
+/*productSchema.pre("save", function (next) {
     if (!this.sku) {
         this.sku = `PROD-${Math.random().toString(36).substr(2, 9).toUpperCase()}`;
     }
     next();
-});
+});*/
 
 let Product = model(collection, schema);
 export default Product;

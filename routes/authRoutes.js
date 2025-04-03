@@ -83,7 +83,7 @@ router.post(
                 { expiresIn: "1h" }
             );
 
-            res.status(200).json({ token, role: user.role });
+            res.status(200).json({ token, role: user.role, user });
         } catch (error) {
             console.error("❌ Error en login:", error);
             res.status(500).json({ message: "Server error" });
